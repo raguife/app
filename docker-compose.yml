@@ -1,0 +1,20 @@
+version: '3.8'
+
+services:
+  # Dê um nome para o serviço, ex: 'web' ou 'frontend'
+  ferramentas-raguife:
+    # Em vez de uma imagem pronta, pedimos para ele construir a nossa
+    # usando o Dockerfile que está na pasta atual ('.')
+    build: .
+    
+    # Dê um nome fixo e amigável para o seu container
+    container_name: ferramentas-marketing-raguife
+    
+    # Política de reinicialização: sempre que o Docker iniciar ou se o container falhar.
+    restart: unless-stopped
+    
+    # Mapeamento de Portas: [Porta na VPS] : [Porta no Container]
+    # Aqui, o que for acessado na porta 3001 da sua VPS será direcionado
+    # para a porta 80 do container (onde o Nginx está rodando).
+    ports:
+      - "3001:80"
